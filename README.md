@@ -1,10 +1,8 @@
 # Docker-Unison
-A docker volume container using [Unison](http://www.cis.upenn.edu/~bcpierce/unison/) for fast two-way folder sync. Created as an alternative to [slow docker for mac volumes on OS X](https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076).
-
-This image is trying to be as minimal as possible and it only weights `14.41MB`.
+A docker volume container using [Unison](http://www.cis.upenn.edu/~bcpierce/unison/) for fast two-way folder sync.
 
 The docker image is available on Docker Hub:
-[registry.hub.docker.com/u/onnimonni/unison/](https://registry.hub.docker.com/u/onnimonni/unison/)
+[registry.hub.docker.com/u/narfman0/docker-unison/](https://registry.hub.docker.com/u/narfman0/docker-unison/)
 
 ## Usage
 
@@ -13,7 +11,7 @@ The docker image is available on Docker Hub:
 First, you can launch a volume container exposing a volume with Unison.
 
 ```bash
-$ CID=$(docker run -d -p 5000:5000 -e UNISON_DIR=/data -v /data onnimonni/unison)
+$ CID=$(docker run -d -p 5000:5000 -e UNISON_DIR=/data -v /data narfman0/docker-unison)
 ```
 
 You can then sync a local folder to `$UNISON_DIR` (default value: `/data`) in the container with:
@@ -54,7 +52,7 @@ mywebserver:
   volumes_from:
     - unison
 unison:
-  image: onnimonni/unison
+  image: narfman0/docker-unison
   environment:
     - UNISON_DIR=/var/www/project
     - UNISON_UID=10000
